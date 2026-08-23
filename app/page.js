@@ -134,12 +134,12 @@ export default function Home() {
 
       <section className="hero section" id="top">
         <div className="eyebrow">B2B OUTBOUND / COLD EMAIL</div>
-        <h1>Outbound built to create <em>sales conversations.</em></h1>
-        <div className="hero-bottom">
+        <h1>Outbound built to create <em>qualified opportunities.</em></h1>
+        <div className="hero-bottom hero-bottom-centered">
           <p className="hero-copy">
-            Readi Leads builds and runs targeted cold email systems — from market research and prospect data to sending infrastructure, campaign execution, and reply handling.
+            Readi Leads builds and runs targeted outbound systems — from market research and prospect data to sending infrastructure, campaign execution, and reply handling.
           </p>
-          <a className="text-link" href="#system">See how it works <span>↓</span></a>
+          <a className="text-link hero-link" href="#system">See how it works <span>↓</span></a>
         </div>
         <SignalGraphic />
       </section>
