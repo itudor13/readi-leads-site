@@ -123,25 +123,44 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a href="#top" className="brand-link"><Mark /></a>
-        <nav>
-          <a href="#system">How it works</a>
-          <a href="#scope">What we handle</a>
-          <a href="#faq">FAQ</a>
-        </nav>
-        <a className="header-cta" href="#system">See the system <span>↘</span></a>
+        <div className="header-inner">
+          <a href="#top" className="brand-link">
+            <div className="brand-slate">
+              <span className="brand-bars">
+                <i></i><i></i><i></i><i></i>
+              </span>
+              <span className="brand-word">Readi</span>
+              <span className="brand-small">LEADS</span>
+            </div>
+          </a>
+
+          <nav>
+            <a href="#system">How it works</a>
+            <a href="#scope">What we handle</a>
+            <a href="#faq">FAQ</a>
+            <a className="nav-button" href="#system">See the process</a>
+          </nav>
+        </div>
       </header>
 
-      <section className="hero section" id="top">
-        <div className="eyebrow">B2B OUTBOUND / COLD EMAIL</div>
-        <h1>Outbound built to create <em>qualified opportunities.</em></h1>
-        <div className="hero-bottom hero-bottom-centered">
-          <p className="hero-copy">
-            Readi Leads builds and runs targeted outbound systems — from market research and prospect data to sending infrastructure, campaign execution, and reply handling.
+      <section className="hero-slate" id="top">
+        <div className="contour-bg" aria-hidden="true"></div>
+        <div className="hero-slate-inner">
+          <h1>
+            <span>Done-for-you outbound.</span>
+            <em>Built to create qualified opportunities.</em>
+          </h1>
+
+          <p>
+            Readi Leads handles targeting, infrastructure, copy, sending,
+            and replies. Your team takes the qualified calls.
           </p>
-          <a className="text-link hero-link" href="#system">See how it works <span>↓</span></a>
+
+          <div className="hero-actions">
+            <a className="primary-button" href="#system">See the system</a>
+            <a className="secondary-link" href="#system">See how it works <span>→</span></a>
+          </div>
         </div>
-        <SignalGraphic />
       </section>
 
       <section className="section problem">
