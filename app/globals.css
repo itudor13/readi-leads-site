@@ -1300,3 +1300,108 @@ footer {
     font-size: 13vw;
   }
 }
+
+
+/* --- V6: enforce the centered page grid through the final section --- */
+
+.closing {
+  width: 100%;
+  min-height: 700px;
+  padding: 125px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.closing .closing-kicker,
+.closing h2,
+.closing p,
+.closing .closing-link {
+  width: min(1070px, calc(100% - 48px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.closing .closing-kicker {
+  margin-bottom: 42px;
+}
+
+.closing h2 {
+  max-width: 1070px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: clamp(58px, 6.7vw, 96px);
+  line-height: .93;
+}
+
+.closing p {
+  max-width: 1070px;
+  margin-top: 34px;
+  margin-bottom: 34px;
+  font-size: 16px;
+}
+
+.closing .closing-link {
+  max-width: 1070px;
+  font-size: 27px;
+  padding-bottom: 7px;
+}
+
+/* Make the visible underline only as wide as the text, while preserving grid alignment */
+.closing .closing-link {
+  border-bottom: 0;
+}
+
+.closing .closing-link::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--ink);
+  margin-top: 6px;
+}
+
+/* Footer gets the exact same left/right page edges */
+footer {
+  width: min(1070px, calc(100% - 48px));
+  min-height: 110px;
+  margin: 0 auto;
+  padding: 28px 0;
+  box-sizing: border-box;
+}
+
+/* Any direct section content that had more-specific legacy margins gets normalized */
+.fit-grid,
+.about-grid,
+.faq-layout,
+.engagement-grid,
+.section-heading-grid,
+.diagnostic-grid,
+.stage-rail,
+.services-grid {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Prevent oversized headings from escaping the centered page width */
+.section h2,
+.closing h2 {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+@media (max-width: 900px) {
+  .closing .closing-kicker,
+  .closing h2,
+  .closing p,
+  .closing .closing-link,
+  footer {
+    width: calc(100% - 32px);
+  }
+
+  .closing {
+    min-height: auto;
+    padding: 90px 0;
+  }
+}
