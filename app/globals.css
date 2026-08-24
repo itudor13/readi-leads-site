@@ -1016,3 +1016,287 @@ footer {
     gap: 17px;
   }
 }
+
+
+/* --- V5: Slate-style below-the-fold formatting --- */
+
+.section {
+  padding: 110px 0;
+}
+
+.section > * {
+  width: min(1070px, calc(100% - 48px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-number {
+  margin-bottom: 48px;
+  color: #6f655d;
+}
+
+.section-heading-grid {
+  grid-template-columns: minmax(0, 1.18fr) minmax(280px, .52fr);
+  gap: 90px;
+  margin-top: 0;
+  margin-bottom: 72px;
+  align-items: start;
+}
+
+.section-heading-grid h2,
+.engagement h2,
+.fit h2,
+.about h2,
+.faq h2 {
+  font-size: clamp(48px, 4.9vw, 70px);
+  line-height: .99;
+  max-width: 730px;
+}
+
+.section-heading-grid p {
+  font-size: 15px;
+  line-height: 1.55;
+  max-width: 390px;
+  margin-top: 8px;
+}
+
+/* Problem section */
+.diagnostic-grid {
+  width: min(1070px, calc(100% - 48px));
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--line);
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.diagnostic {
+  min-height: 410px;
+  padding: 20px 20px 26px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.diagnostic h3 {
+  font-size: 25px;
+  line-height: 1.05;
+  margin: 32px 0 10px;
+}
+
+.diagnostic p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* Four-stage process */
+.stage-rail {
+  width: min(1070px, calc(100% - 48px));
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.stage {
+  min-height: 325px;
+}
+
+.stage h3 {
+  font-size: 27px;
+  margin-top: 122px;
+}
+
+.stage p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* What we handle */
+.services-grid {
+  width: min(1070px, calc(100% - 48px));
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--line);
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.service {
+  min-height: 255px;
+  padding: 22px 22px 27px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.service-num {
+  margin-bottom: 62px;
+}
+
+.service h3 {
+  font-size: 25px;
+  line-height: 1.08;
+  margin-bottom: 10px;
+}
+
+.service p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* Engagement */
+.engagement-grid {
+  width: min(1070px, calc(100% - 48px));
+  grid-template-columns: .95fr 1.05fr;
+  gap: 88px;
+  margin-top: 0;
+}
+
+.engagement-steps article {
+  grid-template-columns: 120px 1fr;
+  padding: 23px 0 27px;
+}
+
+.engagement-steps h3 {
+  font-size: 23px;
+}
+
+.engagement-steps p {
+  font-size: 14px;
+}
+
+/* Fit / About */
+.fit-grid,
+.about-grid {
+  width: min(1070px, calc(100% - 48px));
+  grid-template-columns: 1.05fr .95fr;
+  gap: 92px;
+  margin-top: 0;
+}
+
+.fit-grid p,
+.about-grid p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.about-lead {
+  font-size: 23px !important;
+}
+
+/* FAQ */
+.faq-layout {
+  width: min(1070px, calc(100% - 48px));
+  grid-template-columns: .68fr 1.32fr;
+  gap: 88px;
+  margin-top: 0;
+}
+
+summary {
+  padding: 19px 0;
+}
+
+summary strong {
+  font-size: 15px;
+}
+
+details p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* Closing CTA */
+.closing {
+  padding-top: 125px;
+  padding-bottom: 125px;
+}
+
+.closing > * {
+  width: min(1070px, calc(100% - 48px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.closing h2 {
+  max-width: 950px;
+  font-size: clamp(58px, 6.7vw, 96px);
+  line-height: .93;
+}
+
+.closing p {
+  max-width: 510px;
+  font-size: 16px;
+}
+
+footer {
+  width: min(1070px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.problem,
+.scope,
+.fit,
+.faq {
+  background: #f7f2e9;
+}
+
+.system,
+.engagement,
+.about,
+.closing {
+  background: #f4eee4;
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 80px 0;
+  }
+
+  .section > *,
+  .diagnostic-grid,
+  .stage-rail,
+  .services-grid,
+  .engagement-grid,
+  .fit-grid,
+  .about-grid,
+  .faq-layout,
+  .closing > *,
+  footer {
+    width: calc(100% - 32px);
+  }
+
+  .section-heading-grid,
+  .engagement-grid,
+  .fit-grid,
+  .about-grid,
+  .faq-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .diagnostic-grid,
+  .services-grid,
+  .stage-rail {
+    grid-template-columns: 1fr;
+  }
+
+  .diagnostic,
+  .service,
+  .stage {
+    min-height: auto;
+  }
+
+  .stage h3 {
+    margin-top: 55px;
+  }
+}
+
+@media (max-width: 560px) {
+  .section-heading-grid h2,
+  .engagement h2,
+  .fit h2,
+  .about h2,
+  .faq h2 {
+    font-size: 11vw;
+  }
+
+  .closing h2 {
+    font-size: 13vw;
+  }
+}
