@@ -65,13 +65,9 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="hero-inner">
           <h1>
-            <span>Done-for-you outbound.</span>
-            <em>Built to create qualified opportunities.</em>
+            <span>Done for you targeted email outbound.</span>
+            <em>Pay for performance qualified meetings.</em>
           </h1>
-          <p>
-            Readi Leads handles targeting, infrastructure, copy, sending, and
-            replies. Your team takes the qualified calls.
-          </p>
 
           <div className="hero-video" aria-label="Readi Leads overview video">
             <video
