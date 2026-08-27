@@ -1,187 +1,423 @@
-const services = [
-  "ICP and account targeting",
-  "Domain and inbox infrastructure",
-  "Offer and cold email copy",
-  "Campaign sequencing",
-  "Reply monitoring",
-  "Qualified handoff",
-];
+:root {
+  --ink: #2f2924;
+  --muted: #6d6259;
+  --line: rgba(93, 62, 45, 0.16);
+  --line-strong: rgba(93, 62, 45, 0.26);
+  --paper: #fbf7ef;
+  --paper-deep: #f2eadf;
+  --brown: #5d3e2d;
+  --brown-dark: #3d2a20;
+  --taupe: #b49b83;
+  --white: #fffdf8;
+}
 
-const process = [
-  {
-    step: "01",
-    title: "Map the market",
-    body: "We define the buying audience, filter accounts, and turn the target market into a working prospect list.",
-  },
-  {
-    step: "02",
-    title: "Build the system",
-    body: "We set up the sending foundation, write the campaign, and keep the operation organized behind the scenes.",
-  },
-  {
-    step: "03",
-    title: "Run outbound",
-    body: "We launch controlled campaigns, monitor replies, and adjust targeting and messaging based on real market feedback.",
-  },
-  {
-    step: "04",
-    title: "Hand off opportunities",
-    body: "Your team focuses on qualified conversations instead of list building, tooling, deliverability, and inbox management.",
-  },
-];
+* {
+  box-sizing: border-box;
+}
 
-const faqs = [
-  {
-    question: "Is this a lead list?",
-    answer:
-      "No. Readi Leads is an operated outbound system. Targeting, infrastructure, writing, sending, replies, and qualification all work together.",
-  },
-  {
-    question: "Do you need case studies or existing sales assets?",
-    answer:
-      "No. If you have them, we can use them. If not, we build from your offer, audience, and current proof points without inventing claims.",
-  },
-  {
-    question: "Who is this best for?",
-    answer:
-      "B2B services, agencies, consultants, and operators with a clear offer who want more qualified opportunities without building the outbound machine internally.",
-  },
-];
+html {
+  scroll-behavior: smooth;
+}
 
-export default function Home() {
-  return (
-    <main>
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="Readi Leads home">
-          Readi Leads
-        </a>
-        <nav aria-label="Main navigation">
-          <a href="#system">System</a>
-          <a href="#process">Process</a>
-          <a href="#contact">Book a call</a>
-        </nav>
-      </header>
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
 
-      <section className="hero" id="top">
-        <div className="hero-inner">
-          <h1>
-            <span>Done-for-you outbound.</span>
-            <em>Built to create qualified opportunities.</em>
-          </h1>
-          <p>
-            Readi Leads handles targeting, infrastructure, copy, sending, and
-            replies. Your team takes the qualified calls.
-          </p>
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-          <div className="hero-video" aria-label="Readi Leads overview video">
-            <video
-              controls
-              playsInline
-              preload="metadata"
-              controlsList="nodownload"
-              src="/lower-cost-qualified-meetings-via-cold-email.mp4"
-            >
-              Your browser does not support the video tag.
-            </video>
-          </div>
+.site-header {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 18px 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+}
 
-          <div className="hero-actions">
-            <a className="primary-button" href="#contact">
-              Message me to book a call
-            </a>
-            <a className="secondary-link" href="#system">
-              See how it works <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </div>
-      </section>
+.brand {
+  color: var(--brown);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  font-weight: 700;
+}
 
-      <section className="section section-muted" id="system">
-        <div className="section-inner">
-          <div className="section-heading">
-            <span>Why outbound stalls</span>
-            <h2>Most teams do not have a lead problem. They have an operating problem.</h2>
-          </div>
-          <div className="split">
-            <p>
-              Cold email breaks when targeting, deliverability, copy, sending,
-              and replies are treated like separate projects. Readi Leads turns
-              those pieces into one working system.
-            </p>
-            <p>
-              The result is a cleaner path from market selection to qualified
-              conversations, without asking your internal team to become outbound
-              technicians.
-            </p>
-          </div>
-        </div>
-      </section>
+nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  color: var(--muted);
+  font-size: 14px;
+}
 
-      <section className="section">
-        <div className="section-inner">
-          <div className="section-heading">
-            <span>What we handle</span>
-            <h2>The outbound engine, operated for you.</h2>
-          </div>
-          <div className="service-grid">
-            {services.map((service) => (
-              <article className="service-card" key={service}>
-                <h3>{service}</h3>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 22px 20px 44px;
+}
 
-      <section className="section section-muted" id="process">
-        <div className="section-inner">
-          <div className="section-heading">
-            <span>Process</span>
-            <h2>A straightforward path from targeting to booked calls.</h2>
-          </div>
-          <div className="process-list">
-            {process.map((item) => (
-              <article className="process-item" key={item.step}>
-                <span>{item.step}</span>
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  width: min(1040px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
 
-      <section className="section">
-        <div className="section-inner narrow">
-          <div className="section-heading centered">
-            <span>FAQ</span>
-            <h2>Simple answers before we talk.</h2>
-          </div>
-          <div className="faq-list">
-            {faqs.map((item) => (
-              <article className="faq-item" key={item.question}>
-                <h3>{item.question}</h3>
-                <p>{item.answer}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+.hero h1 {
+  margin: 0 auto;
+  max-width: 1040px;
+  color: var(--brown-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(44px, 5.2vw, 68px);
+  line-height: 1.02;
+  letter-spacing: 0;
+  font-weight: 700;
+}
 
-      <section className="closing" id="contact">
-        <div className="closing-inner">
-          <h2>Want Readi Leads to build your outbound system?</h2>
-          <p>
-            Watch the overview above, then send a quick message and we can talk
-            through whether this makes sense for your offer.
-          </p>
-          <a className="primary-button" href="mailto:hello@readileads.com?subject=Readi%20Leads%20call">
-            Message me to book a call
-          </a>
-        </div>
-      </section>
-    </main>
-  );
+.hero h1 span,
+.hero h1 em {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero h1 em {
+  color: var(--brown);
+  font-size: 0.9em;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: clamp(17px, 1.9vw, 21px);
+  line-height: 1.45;
+}
+
+.hero-video {
+  width: min(820px, 100%);
+  aspect-ratio: 16 / 9;
+  margin: 24px auto 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 18px 46px rgba(42, 36, 31, 0.1);
+}
+
+.hero-video video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  object-fit: cover;
+}
+
+.hero-actions {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.primary-button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  border: 1px solid var(--brown-dark);
+  border-radius: 4px;
+  background: var(--brown-dark);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.secondary-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--brown);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.section {
+  padding: 92px 20px;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.section-muted {
+  background: var(--paper-deep);
+}
+
+.section-inner {
+  width: min(1070px, 100%);
+  margin: 0 auto;
+}
+
+.section-inner.narrow {
+  width: min(860px, 100%);
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: 0.56fr 1fr;
+  gap: 70px;
+  align-items: start;
+  margin-bottom: 42px;
+}
+
+.section-heading.centered {
+  display: block;
+  text-align: center;
+}
+
+.section-heading span {
+  color: var(--brown);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: var(--brown-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.section-heading.centered h2 {
+  margin-top: 12px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 34px;
+}
+
+.split p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.service-card {
+  min-height: 138px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--white);
+}
+
+.service-card h3,
+.process-item h3,
+.faq-item h3 {
+  margin: 0;
+  color: var(--brown-dark);
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.process-list {
+  border-top: 1px solid var(--line);
+}
+
+.process-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 28px;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.process-item > span {
+  color: var(--taupe);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  line-height: 1;
+}
+
+.process-item p,
+.faq-item p {
+  max-width: 720px;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+}
+
+.faq-item:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.closing {
+  padding: 96px 20px 42px;
+  background: var(--brown-dark);
+  color: var(--white);
+  text-align: center;
+}
+
+.closing-inner {
+  width: min(820px, 100%);
+  margin: 0 auto;
+}
+
+.closing h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.closing p {
+  max-width: 620px;
+  margin: 20px auto 28px;
+  color: rgba(255, 253, 248, 0.74);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.closing .primary-button {
+  border-color: var(--white);
+  background: var(--white);
+  color: var(--brown-dark);
+}
+
+@media (max-width: 780px) {
+  .site-header {
+    width: min(100% - 28px, 1120px);
+    padding-top: 16px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  nav {
+    width: 100%;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .hero {
+    padding: 18px 14px 34px;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 10vw, 52px);
+  }
+
+  .hero h1 span,
+  .hero h1 em {
+    white-space: normal;
+  }
+
+  .hero-video {
+    margin-top: 18px;
+  }
+
+  .hero-actions {
+    margin-top: 18px;
+    gap: 16px;
+  }
+
+  .section,
+  .closing {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section {
+    padding-top: 68px;
+    padding-bottom: 68px;
+  }
+
+  .section-heading,
+  .split,
+  .service-grid,
+  .process-item {
+    display: block;
+  }
+
+  .section-heading {
+    margin-bottom: 30px;
+  }
+
+  .section-heading h2 {
+    margin-top: 12px;
+  }
+
+  .split p + p {
+    margin-top: 18px;
+  }
+
+  .service-card + .service-card {
+    margin-top: 12px;
+  }
+
+  .process-item > span {
+    display: block;
+    margin-bottom: 14px;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 900px) {
+  .site-header {
+    padding-top: 14px;
+    padding-bottom: 8px;
+  }
+
+  .hero {
+    padding-top: 14px;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 4.9vw, 62px);
+  }
+
+  .hero-video {
+    width: min(760px, 100%);
+    margin-top: 18px;
+  }
+
+  .hero-actions {
+    margin-top: 18px;
+  }
 }
