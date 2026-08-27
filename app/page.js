@@ -156,6 +156,15 @@ export default function Home() {
             and replies. Your team takes the qualified calls.
           </p>
 
+          <div className="loom-video">
+            <iframe
+              src="https://www.loom.com/embed/cbd5c2001b0a4af5b7a6c764ed740533"
+              frameBorder="0"
+              allowFullScreen
+              title="Readi Leads"
+            />
+          </div>
+
           <div className="hero-actions">
             <a className="primary-button" href="#system">See the system</a>
             <a className="secondary-link" href="#system">See how it works <span>→</span></a>
