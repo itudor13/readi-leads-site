@@ -1,14 +1,30 @@
+import Script from "next/script";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+});
+
 export const metadata = {
-  title: "Readi Leads | Done-for-you B2B outbound",
+  title: "Readi Leads | Pay for Qualified Meetings",
   description:
-    "Readi Leads builds and runs targeted cold email systems for B2B companies — from market research and data to infrastructure, campaign execution, and reply handling.",
+    "Done for you targeted email outbound. Pay for qualified meetings. We pick who to email, set up sending, write the notes, and book the meetings that show up.",
   metadataBase: new URL("https://readileads.com"),
   openGraph: {
-    title: "Readi Leads | Done-for-you B2B outbound",
+    title: "Readi Leads | Pay for Qualified Meetings",
     description:
-      "Targeted outbound systems built to create qualified sales conversations.",
+      "Done for you targeted email outbound. Pay for qualified meetings.",
     url: "https://readileads.com",
     siteName: "Readi Leads",
     type: "website",
@@ -17,8 +33,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`}>
+      <body>
+        {children}
+        <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }
