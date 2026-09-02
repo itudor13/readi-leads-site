@@ -216,30 +216,53 @@ nav {
   text-align: center;
 }
 
-.service-grid {
+.stack {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.stack p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.stack p + p {
+  margin-top: 18px;
+}
+
+.skip-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  width: min(980px, 100%);
+  gap: 12px;
+  width: min(860px, 100%);
   margin: 0 auto;
 }
 
-.service-card {
-  min-height: 138px;
-  padding: 24px;
+.skip-card {
+  padding: 22px 28px;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: var(--white);
   text-align: center;
 }
 
-.service-card h3,
+.skip-card h3,
 .process-item h3,
 .faq-item h3 {
   margin: 0;
   color: var(--brown-dark);
   font-size: 19px;
+  font-weight: 700;
   line-height: 1.25;
+}
+
+.skip-card p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .process-list {
@@ -372,7 +395,7 @@ nav {
 
   .section-heading,
   .split,
-  .service-grid,
+  .skip-list,
   .process-item {
     display: block;
   }
@@ -389,7 +412,7 @@ nav {
     margin-top: 18px;
   }
 
-  .service-card + .service-card {
+  .skip-card + .skip-card {
     margin-top: 12px;
   }
 

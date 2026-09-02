@@ -1,14 +1,14 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Readi Leads | Done-for-you B2B outbound",
+  title: "Readi Leads | Done for you targeted email outbound",
   description:
-    "Readi Leads builds and runs targeted cold email systems for B2B companies — from market research and data to infrastructure, campaign execution, and reply handling.",
+    "Done for you targeted email outbound. Pay for qualified meetings. Readi Leads runs the sending for you, and you pay when a qualified meeting shows up.",
   metadataBase: new URL("https://readileads.com"),
   openGraph: {
-    title: "Readi Leads | Done-for-you B2B outbound",
+    title: "Readi Leads | Done for you targeted email outbound",
     description:
-      "Targeted outbound systems built to create qualified sales conversations.",
+      "Done for you targeted email outbound. Pay for qualified meetings.",
     url: "https://readileads.com",
     siteName: "Readi Leads",
     type: "website",
