@@ -328,6 +328,12 @@ nav a[href="#book"] {
   padding-left: 28px;
 }
 
+.handle-row:last-child {
+  grid-column: 1 / -1;
+  border-right: 0;
+  padding-right: 0;
+}
+
 .who-copy {
   max-width: 720px;
   font-size: 18px;
@@ -394,7 +400,7 @@ nav a[href="#book"] {
 }
 
 .roi-sliders {
-  padding: 22px;
+  padding: 18px 20px 12px;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--paper-card);
@@ -411,7 +417,7 @@ nav a[href="#book"] {
 
 .slider-row {
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 11px;
 }
 
 .slider-top {
@@ -497,7 +503,7 @@ nav a[href="#book"] {
 .roi-multiple {
   margin: 8px 0 0;
   font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(64px, 8vw, 92px);
+  font-size: clamp(56px, 7vw, 84px);
   line-height: 0.9;
 }
 
@@ -606,7 +612,7 @@ nav a[href="#book"] {
 }
 
 .closing {
-  padding: 88px 20px 64px;
+  padding: 72px 20px 64px;
   background: var(--dark);
   color: var(--white);
   text-align: center;
@@ -620,6 +626,7 @@ nav a[href="#book"] {
 .closing h2 {
   max-width: 760px;
   margin: 0 auto;
+  color: var(--white);
 }
 
 .closing .primary-button {
