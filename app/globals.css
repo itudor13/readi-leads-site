@@ -61,7 +61,7 @@ nav {
 
 .hero {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   padding: 22px 20px 44px;
 }
 
@@ -122,6 +122,16 @@ nav {
   display: block;
   border: 0;
   object-fit: cover;
+}
+
+.hero-calendly {
+  width: min(820px, 100%);
+  margin: 24px auto 0;
+}
+
+.hero-calendly .calendly-inline-widget {
+  min-width: 320px;
+  height: 850px;
 }
 
 .hero-actions {
@@ -377,6 +387,10 @@ nav {
     margin-top: 18px;
   }
 
+  .hero-calendly {
+    margin-top: 18px;
+  }
+
   .hero-actions {
     margin-top: 18px;
     gap: 16px;
@@ -436,7 +450,8 @@ nav {
     font-size: clamp(42px, 4.9vw, 62px);
   }
 
-  .hero-video {
+  .hero-video,
+  .hero-calendly {
     width: min(760px, 100%);
     margin-top: 18px;
   }

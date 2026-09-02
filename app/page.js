@@ -1,3 +1,5 @@
+import Script from "next/script";
+
 const process = [
   {
     step: "01",
@@ -80,7 +82,7 @@ export default function Home() {
           <a href="#why-email">Why email</a>
           <a href="#what-goes-wrong">What goes wrong</a>
           <a href="#faq">FAQ</a>
-          <a href="#contact">Book a call</a>
+          <a href="#book">Book a call</a>
         </nav>
       </header>
 
@@ -104,10 +106,23 @@ export default function Home() {
             </video>
           </div>
 
+          <div
+            className="hero-calendly"
+            id="book"
+            aria-label="Book a Readi Leads discovery call"
+          >
+            <div
+              className="calendly-inline-widget"
+              data-url="https://calendly.com/iantudor/readileads"
+              style={{ minWidth: "320px", height: "850px" }}
+            />
+            <Script
+              src="https://assets.calendly.com/assets/external/widget.js"
+              strategy="afterInteractive"
+            />
+          </div>
+
           <div className="hero-actions">
-            <a className="primary-button" href="#contact">
-              Message me to book a call
-            </a>
             <a className="secondary-link" href="#right-way">
               See how it works <span aria-hidden="true">→</span>
             </a>
