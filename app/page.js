@@ -5,55 +5,34 @@ const CALENDLY_URL =
 
 const whyCards = [
   {
-    label: "Sending check",
+    label: "Sending",
     rows: [
-      ["company domain", "Tired"],
-      ["fresh domains", "None"],
-      ["bounce watch", "Off"],
+      ["company domain", "tired"],
+      ["fresh inboxes", "missing"],
+      ["bounce watch", "off"],
     ],
-    title: "No sending setup",
-    body: "You cannot send a pile of generic notes from the company domain and expect it to convert. Inboxes, bounce rates, and domain health have to stay current.",
+    title: "No clean sending setup",
+    body: "Generic emails from your main domain burn trust fast. The sending system has to be separate, warmed, and watched.",
   },
   {
-    label: "Market coverage",
+    label: "Market",
     rows: [
-      ["people you already know", "~40"],
-      ["companies you could email", "8,000-10,000"],
-      ["coverage", "Tiny"],
+      ["warm network", "~40"],
+      ["real market", "8k-10k"],
+      ["coverage", "too small"],
     ],
-    title: "Most companies never hear from you",
-    body: "Referrals only hit people who already know you. The rest of a real market sits untouched.",
+    title: "Not enough market coverage",
+    body: "Referrals only reach people who already know you. Outbound works when the right market hears from you consistently.",
   },
   {
     label: "Replies",
     rows: [
-      ["“Interested”", "No follow-up"],
-      ["price pushback", "Lost"],
-      ["no-show", "Gone stale"],
+      ["interested", "needs follow-up"],
+      ["pushback", "needs answer"],
+      ["no-show", "needs nurture"],
     ],
-    title: "Good replies go cold",
-    body: "Slow replies lose people who were ready to talk. Someone has to own the inbox the same day.",
-  },
-];
-
-const steps = [
-  {
-    icon: "clock",
-    title: "Strategy call",
-    body: "In 30 minutes we lock who to go after, whether a $5,000 offer and 8,000 to 10,000 companies makes this worth it, and what a qualified meeting means. You get that read either way.",
-    meta: "before you commit",
-  },
-  {
-    icon: "clipboard",
-    title: "Campaign setup",
-    body: "We stand up fresh domains and inboxes, build the list, and write messaging by group. You approve the words before anything sends.",
-    meta: "weeks 1 to 3",
-  },
-  {
-    icon: "calendar",
-    title: "Campaigns launch",
-    body: "We send, watch bounces, work replies, and put sales and trust assets in the pre-call sequence so more people actually show.",
-    meta: "week 4 onward",
+    title: "Good replies go stale",
+    body: "Interested people cool off when no one owns the inbox. Replies need same-day handling and a clear path to a meeting.",
   },
 ];
 
@@ -168,25 +147,6 @@ function Icon({ name }) {
   };
 
   const paths = {
-    clock: (
-      <>
-        <circle cx="12" cy="12" r="8" />
-        <path d="M12 8v4.5l2.5 1.5" />
-      </>
-    ),
-    clipboard: (
-      <>
-        <rect x="6" y="5" width="12" height="15" rx="2" />
-        <path d="M9 5.5V4h6v1.5" />
-        <path d="M9 10h6M9 14h4" />
-      </>
-    ),
-    calendar: (
-      <>
-        <rect x="4" y="5" width="16" height="15" rx="2" />
-        <path d="M8 3.5V7M16 3.5V7M4 10h16" />
-      </>
-    ),
     fleet: (
       <>
         <path d="M4 18h16" />
@@ -255,8 +215,8 @@ export default function Home() {
         </a>
         <nav aria-label="Main navigation">
           <a href="#why">Why</a>
-          <a href="#how">How</a>
           <a href="#roi">ROI</a>
+          <a href="#who">Proof</a>
           <a href="#faq">FAQ</a>
           <a href="#book">Book a call</a>
         </nav>
@@ -299,8 +259,7 @@ export default function Home() {
               Why outbound has not worked <em>yet.</em>
             </h2>
             <p className="section-intro">
-              Most teams do not have the sending setup, the market coverage, or
-              anyone on replies. So the channel looks dead.
+              Three problems usually kill it: weak sending, small markets, and slow reply handling.
             </p>
           </div>
           <div className="card-grid three">
@@ -323,30 +282,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" id="how">
-        <div className="section-inner">
-          <div className="section-heading">
-            <h2>
-              What happens after the first <em>call.</em>
-            </h2>
-            <p className="section-intro">
-              You do not buy a list. We pick who to email, set up sending, write
-              the notes, and book the meetings that show up.
-            </p>
-          </div>
-          <div className="card-grid three">
-            {steps.map((step) => (
-              <article className="step-card" key={step.title}>
-                <Icon name={step.icon} />
-                <h3>{step.title}</h3>
-                <p>{step.body}</p>
-                <span>{step.meta}</span>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section" id="handles">
         <div className="section-inner">
           <div className="section-heading">
@@ -354,8 +289,7 @@ export default function Home() {
               What Readi Leads <em>handles.</em>
             </h2>
             <p className="section-intro">
-              You bring the offer and take the sales calls. We run the work that
-              creates them.
+              You bring the offer and take the sales calls. We run the work that creates them.
             </p>
           </div>
           <div className="handles-grid">
@@ -375,18 +309,23 @@ export default function Home() {
       <RoiCalculator />
 
       <section className="section" id="who">
-        <div className="section-inner narrow">
-          <div className="section-heading left">
-            <h2>
-              Who is running <em>this.</em>
-            </h2>
-            <p className="section-intro">Short version. No long story.</p>
+        <div className="section-inner founder-layout">
+          <img
+            className="founder-photo"
+            src="https://media.arizonafoothillsmagazine.com/people/wp-content/uploads/2023/09/29144246/headshot.jpeg"
+            alt="Ian Tudor"
+          />
+          <div>
+            <div className="section-heading left founder-heading">
+              <h2>
+                Who is running <em>this.</em>
+              </h2>
+              <p className="section-intro">Short version. No long story.</p>
+            </div>
+            <p className="who-copy">
+              Ian Tudor assembled a $35M mobile home park portfolio via cold outreach. Readi Leads applies that same discipline for B2B teams who need qualified meetings without building the machine in-house.
+            </p>
           </div>
-          <p className="who-copy">
-            Ian Tudor built an 8-figure real estate portfolio through cold
-            outreach. Readi Leads is that same discipline, run for B2B teams who
-            need qualified meetings without building the machine in-house.
-          </p>
         </div>
       </section>
 
