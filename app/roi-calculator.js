@@ -1,44 +1,37 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { computeRoi, ROI_DEFAULTS } from "./lib/roi";
+import {
+  computeRoi,
+  ROI_ASSUMPTIONS,
+  ROI_DEFAULTS,
+  ROI_SLIDER_RANGES,
+} from "./lib/roi";
 
 const SLIDERS = [
   {
-    key: "emails",
-    label: "Emails sent",
-    helper: "Most campaigns need 8,000-30,000 targeted sends to learn anything useful.",
-    min: 5000,
-    max: 60000,
-    step: 1000,
-    kind: "int",
-  },
-  {
-    key: "replyRate",
-    label: "Reply rate",
-    helper: "A normal cold email range is roughly 1-3% depending on market and offer.",
-    min: 0.5,
-    max: 5,
-    step: 0.1,
-    kind: "pct1",
-  },
-  {
-    key: "positiveRate",
-    label: "Meeting rate from replies",
-    helper: "A practical planning range is 5-15% of replies turning into real meetings.",
-    min: 2,
-    max: 25,
-    step: 1,
-    kind: "pct0",
+    key: "emailsPerDay",
+    label: "Emails per day",
+    kind: "emails",
+    minLabel: "1k",
+    maxLabel: "10k",
+    ...ROI_SLIDER_RANGES.emailsPerDay,
   },
   {
     key: "ltv",
-    label: "Customer value",
-    helper: "Use the first-year value of a customer, not a best-case lifetime number.",
-    min: 2000,
-    max: 50000,
-    step: 500,
+    label: "Average client LTV",
     kind: "money",
+    minLabel: "$500",
+    maxLabel: "$50,000",
+    ...ROI_SLIDER_RANGES.ltv,
+  },
+  {
+    key: "closeRate",
+    label: "Close rate from meetings",
+    kind: "pct",
+    minLabel: "5%",
+    maxLabel: "50%",
+    ...ROI_SLIDER_RANGES.closeRate,
   },
 ];
 
@@ -55,9 +48,7 @@ function commas(n) {
 }
 
 function displayValue(kind, value) {
-  if (kind === "pct1") return Number(value).toFixed(1);
-  if (kind === "money") return commas(value);
-  if (kind === "pct0") return String(Math.round(value));
+  if (kind === "pct") return String(Math.round(value));
   return commas(value);
 }
 
@@ -67,8 +58,22 @@ function parseInput(raw) {
   return Number.isFinite(n) ? n : 0;
 }
 
+function fillPercent(value, min, max) {
+  if (max === min) return 0;
+  return ((value - min) / (max - min)) * 100;
+}
+
+const ASSUMPTION_COPY = [
+  `${ROI_ASSUMPTIONS.replyRate * 100}% reply rate`,
+  `${ROI_ASSUMPTIONS.positiveRate * 100}% of replies are positive`,
+  `${ROI_ASSUMPTIONS.bookingRate * 100}% of positive replies book a meeting`,
+  `${ROI_ASSUMPTIONS.sendingDaysPerMonth} sending days per month`,
+];
+
 export default function RoiCalculator() {
   const [values, setValues] = useState(ROI_DEFAULTS);
+  const [focusedKey, setFocusedKey] = useState(null);
+  const [drafts, setDrafts] = useState({});
   const stats = useMemo(() => computeRoi(values), [values]);
 
   function update(key, next, min, max) {
@@ -76,30 +81,57 @@ export default function RoiCalculator() {
     setValues((current) => ({ ...current, [key]: clamped }));
   }
 
-  const roiLabel = stats.spend > 0 ? `${stats.roi.toFixed(1)}x` : "-";
+  function commitInput(key, raw, min, max) {
+    update(key, parseInput(raw), min, max);
+    setFocusedKey(null);
+    setDrafts((current) => {
+      const next = { ...current };
+      delete next[key];
+      return next;
+    });
+  }
+
+  const resultCards = [
+    {
+      key: "replies",
+      label: "Total replies",
+      value: commas(stats.display.totalReplies),
+    },
+    {
+      key: "positive",
+      label: "Positive replies (leads)",
+      value: commas(stats.display.positive),
+      accent: true,
+    },
+    {
+      key: "meetings",
+      label: "Meetings booked",
+      value: commas(stats.display.meetings),
+    },
+    {
+      key: "deals",
+      label: "Deals closed",
+      value: commas(stats.display.deals),
+    },
+  ];
 
   return (
     <section className="section roi-section" id="roi">
       <div className="section-inner roi-wrap">
         <div className="roi-heading">
-          <p className="kicker">Pay for qualified meetings</p>
+          <p className="kicker">Monthly projection</p>
           <h2>
-            What is a month of outbound <em>worth?</em>
+            What could a month of outbound <em>produce?</em>
           </h2>
           <p className="section-intro">
-            Use a few realistic planning numbers. We keep show rate, close rate,
-            and meeting cost fixed to simple industry benchmarks.
+            Set your daily volume, client value, and close rate. Reply rate and
+            booking assumptions stay fixed so the estimate stays conservative.
           </p>
         </div>
 
-        <div className="roi-grid simplified">
-          <div className="roi-sliders">
-            <div className="roi-benchmarks">
-              <span>Benchmarks used</span>
-              <b>60% show rate</b>
-              <b>20% close rate</b>
-              <b>$250 per showed meeting</b>
-            </div>
+        <div className="roi-card">
+          <div className="roi-inputs">
+            <h3 className="roi-col-title">Your numbers</h3>
 
             {SLIDERS.map((slider) => (
               <label className="slider-row" key={slider.key}>
@@ -109,21 +141,35 @@ export default function RoiCalculator() {
                     {slider.kind === "money" ? <span className="prefix">$</span> : null}
                     <input
                       type="text"
-                      inputMode="decimal"
-                      value={displayValue(slider.kind, values[slider.key])}
-                      onChange={(event) =>
-                        update(
-                          slider.key,
-                          parseInput(event.target.value),
-                          slider.min,
-                          slider.max
-                        )
+                      inputMode="numeric"
+                      value={
+                        focusedKey === slider.key && drafts[slider.key] != null
+                          ? drafts[slider.key]
+                          : displayValue(slider.kind, values[slider.key])
+                      }
+                      onFocus={(event) => {
+                        setFocusedKey(slider.key);
+                        setDrafts((current) => ({
+                          ...current,
+                          [slider.key]: String(values[slider.key]),
+                        }));
+                        event.target.select();
+                      }}
+                      onChange={(event) => {
+                        const raw = event.target.value;
+                        setDrafts((current) => ({ ...current, [slider.key]: raw }));
+                        const parsed = parseInput(raw);
+                        if (parsed >= slider.min && parsed <= slider.max) {
+                          setValues((current) => ({ ...current, [slider.key]: parsed }));
+                        }
+                      }}
+                      onBlur={(event) =>
+                        commitInput(slider.key, event.target.value, slider.min, slider.max)
                       }
                       aria-label={slider.label}
                     />
-                    {slider.kind === "pct0" || slider.kind === "pct1" ? (
-                      <span className="suffix">%</span>
-                    ) : null}
+                    {slider.kind === "emails" ? <span className="suffix">/day</span> : null}
+                    {slider.kind === "pct" ? <span className="suffix">%</span> : null}
                   </span>
                 </span>
                 <input
@@ -132,45 +178,59 @@ export default function RoiCalculator() {
                   max={slider.max}
                   step={slider.step}
                   value={values[slider.key]}
-                  onChange={(event) =>
-                    update(slider.key, Number(event.target.value), slider.min, slider.max)
-                  }
+                  style={{
+                    background: `linear-gradient(to right, var(--ink) ${fillPercent(
+                      values[slider.key],
+                      slider.min,
+                      slider.max
+                    )}%, #e6dfd2 ${fillPercent(
+                      values[slider.key],
+                      slider.min,
+                      slider.max
+                    )}%)`,
+                  }}
+                  onChange={(event) => {
+                    const next = Number(event.target.value);
+                    update(slider.key, next, slider.min, slider.max);
+                    if (focusedKey === slider.key) {
+                      setDrafts((current) => ({ ...current, [slider.key]: String(next) }));
+                    }
+                  }}
                 />
-                <span className="slider-helper">{slider.helper}</span>
+                <span className="slider-scale">
+                  <span>{slider.minLabel}</span>
+                  <span>{slider.maxLabel}</span>
+                </span>
               </label>
             ))}
+
+            <div className="roi-assumptions">
+              <p>Conservative assumptions</p>
+              <p>{ASSUMPTION_COPY.join(" · ")}</p>
+            </div>
           </div>
 
-          <div className="roi-panel simplified">
-            <p className="roi-panel-kicker">One month estimate</p>
-            <p className="roi-multiple">{roiLabel}</p>
-            <p className="roi-cover">
-              {commas(stats.showed)} qualified meetings could create {commas(stats.closed)} new customers.
-            </p>
+          <div className="roi-results" aria-live="polite">
+            <h3 className="roi-col-title">Projected monthly results</h3>
 
-            <div className="roi-metrics simplified">
-              <div>
-                <span>Qualified meetings</span>
-                <strong>{commas(stats.showed)}</strong>
-              </div>
-              <div>
-                <span>New customers</span>
-                <strong>{commas(stats.closed)}</strong>
-              </div>
-              <div>
-                <span>Revenue</span>
-                <strong>{money(stats.revenue)}</strong>
-              </div>
-              <div>
-                <span>Meeting spend</span>
-                <strong>{money(stats.spend)}</strong>
-              </div>
+            <div className="roi-metrics">
+              {resultCards.map((card) => (
+                <div key={card.key} className={card.accent ? "accent" : undefined}>
+                  <span>{card.label}</span>
+                  <strong>{card.value}</strong>
+                </div>
+              ))}
             </div>
 
-            <div className="roi-net">
-              <span>Estimated net</span>
-              <strong>{money(stats.net)}</strong>
+            <div className="roi-revenue">
+              <span>Projected revenue</span>
+              <strong>{money(stats.display.projectedRevenue)}</strong>
             </div>
+            <p className="roi-revenue-note">Gross projected revenue. Fees are set on the call.</p>
+
+            <a className="primary-button" href="#book">
+              Book a call
+            </a>
           </div>
         </div>
       </div>

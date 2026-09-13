@@ -1,43 +1,43 @@
-export const ROI_DEFAULTS = {
-  emails: 30000,
-  replyRate: 1.5,
-  positiveRate: 10,
-  showRate: 60,
-  closeRate: 20,
-  ltv: 10000,
-  costPerShowed: 250,
+export const ROI_ASSUMPTIONS = {
+  replyRate: 0.01,
+  positiveRate: 0.05,
+  bookingRate: 0.4,
+  sendingDaysPerMonth: 22,
 };
 
-export function computeRoi({
-  emails,
-  replyRate,
-  positiveRate,
-  showRate,
-  closeRate,
-  ltv,
-  costPerShowed,
-}) {
-  const replies = emails * (replyRate / 100);
-  const positive = replies * (positiveRate / 100);
-  const showed = positive * (showRate / 100);
-  const closed = Math.round(showed * (closeRate / 100));
-  const revenue = closed * ltv;
-  const callsToClose = closeRate > 0 ? 100 / closeRate : 0;
-  const showedForSpend = closed * callsToClose;
-  const spend = showedForSpend * costPerShowed;
-  const net = revenue - spend;
-  const roi = spend > 0 ? revenue / spend : 0;
+export const ROI_SLIDER_RANGES = {
+  emailsPerDay: { min: 1000, max: 10000, step: 100 },
+  ltv: { min: 500, max: 50000, step: 250 },
+  closeRate: { min: 5, max: 50, step: 1 },
+};
+
+export const ROI_DEFAULTS = {
+  emailsPerDay: 1000,
+  ltv: 7500,
+  closeRate: 20,
+};
+
+export function computeRoi({ emailsPerDay, ltv, closeRate }) {
+  const emailsPerMonth = emailsPerDay * ROI_ASSUMPTIONS.sendingDaysPerMonth;
+  const totalReplies = emailsPerMonth * ROI_ASSUMPTIONS.replyRate;
+  const positive = totalReplies * ROI_ASSUMPTIONS.positiveRate;
+  const meetings = positive * ROI_ASSUMPTIONS.bookingRate;
+  const deals = meetings * (closeRate / 100);
+  const projectedRevenue = deals * ltv;
 
   return {
-    replies: Math.round(replies),
-    positive: Math.round(positive),
-    showed: Math.round(showed),
-    closed,
-    revenue,
-    spend,
-    net,
-    roi,
-    callsToClose,
-    showedForSpend,
+    emailsPerMonth,
+    totalReplies,
+    positive,
+    meetings,
+    deals,
+    projectedRevenue,
+    display: {
+      totalReplies: Math.round(totalReplies),
+      positive: Math.round(positive),
+      meetings: Math.round(meetings),
+      deals: Math.round(deals),
+      projectedRevenue: Math.round(projectedRevenue),
+    },
   };
 }
