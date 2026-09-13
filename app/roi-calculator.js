@@ -72,11 +72,23 @@ const ASSUMPTION_COPY = [
 
 export default function RoiCalculator() {
   const [values, setValues] = useState(ROI_DEFAULTS);
+  const [focusedKey, setFocusedKey] = useState(null);
+  const [drafts, setDrafts] = useState({});
   const stats = useMemo(() => computeRoi(values), [values]);
 
   function update(key, next, min, max) {
     const clamped = Math.min(max, Math.max(min, next));
     setValues((current) => ({ ...current, [key]: clamped }));
+  }
+
+  function commitInput(key, raw, min, max) {
+    update(key, parseInput(raw), min, max);
+    setFocusedKey(null);
+    setDrafts((current) => {
+      const next = { ...current };
+      delete next[key];
+      return next;
+    });
   }
 
   const resultCards = [
@@ -130,14 +142,29 @@ export default function RoiCalculator() {
                     <input
                       type="text"
                       inputMode="numeric"
-                      value={displayValue(slider.kind, values[slider.key])}
-                      onChange={(event) =>
-                        update(
-                          slider.key,
-                          parseInput(event.target.value),
-                          slider.min,
-                          slider.max
-                        )
+                      value={
+                        focusedKey === slider.key && drafts[slider.key] != null
+                          ? drafts[slider.key]
+                          : displayValue(slider.kind, values[slider.key])
+                      }
+                      onFocus={(event) => {
+                        setFocusedKey(slider.key);
+                        setDrafts((current) => ({
+                          ...current,
+                          [slider.key]: String(values[slider.key]),
+                        }));
+                        event.target.select();
+                      }}
+                      onChange={(event) => {
+                        const raw = event.target.value;
+                        setDrafts((current) => ({ ...current, [slider.key]: raw }));
+                        const parsed = parseInput(raw);
+                        if (parsed >= slider.min && parsed <= slider.max) {
+                          setValues((current) => ({ ...current, [slider.key]: parsed }));
+                        }
+                      }}
+                      onBlur={(event) =>
+                        commitInput(slider.key, event.target.value, slider.min, slider.max)
                       }
                       aria-label={slider.label}
                     />
@@ -162,9 +189,13 @@ export default function RoiCalculator() {
                       slider.max
                     )}%)`,
                   }}
-                  onChange={(event) =>
-                    update(slider.key, Number(event.target.value), slider.min, slider.max)
-                  }
+                  onChange={(event) => {
+                    const next = Number(event.target.value);
+                    update(slider.key, next, slider.min, slider.max);
+                    if (focusedKey === slider.key) {
+                      setDrafts((current) => ({ ...current, [slider.key]: String(next) }));
+                    }
+                  }}
                 />
                 <span className="slider-scale">
                   <span>{slider.minLabel}</span>
