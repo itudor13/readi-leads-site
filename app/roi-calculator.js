@@ -47,6 +47,12 @@ function commas(n) {
   return new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(n);
 }
 
+function count(n) {
+  return new Intl.NumberFormat("en-US", {
+    maximumFractionDigits: 1,
+  }).format(n);
+}
+
 function displayValue(kind, value) {
   if (kind === "pct") return String(Math.round(value));
   return commas(value);
@@ -106,13 +112,13 @@ export default function RoiCalculator() {
     },
     {
       key: "meetings",
-      label: "Meetings booked",
-      value: commas(stats.display.meetings),
+      label: "Expected meetings",
+      value: count(stats.display.meetings),
     },
     {
       key: "deals",
-      label: "Deals closed",
-      value: commas(stats.display.deals),
+      label: "Expected deals",
+      value: count(stats.display.deals),
     },
   ];
 
