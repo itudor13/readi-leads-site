@@ -19,6 +19,10 @@ export const ROI_DEFAULTS = {
   closeRate: 20,
 };
 
+function expectedCount(n) {
+  return Number(n.toFixed(1));
+}
+
 export function computeRoi({ emailsPerDay, ltv, closeRate }) {
   const emailsPerMonth = emailsPerDay * ROI_ASSUMPTIONS.sendingDaysPerMonth;
   const totalReplies = emailsPerMonth * ROI_ASSUMPTIONS.replyRate;
@@ -46,8 +50,8 @@ export function computeRoi({ emailsPerDay, ltv, closeRate }) {
     display: {
       totalReplies: Math.round(totalReplies),
       positive: Math.round(positive),
-      meetings: Math.round(meetings),
-      deals: Math.round(deals),
+      meetings: expectedCount(meetings),
+      deals: expectedCount(deals),
       projectedRevenue: Math.round(projectedRevenue),
       infrastructureCost: Math.round(infrastructureCost),
       meetingFees: Math.round(meetingFees),
