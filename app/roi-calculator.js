@@ -226,7 +226,16 @@ export default function RoiCalculator() {
               <span>Projected revenue</span>
               <strong>{money(stats.display.projectedRevenue)}</strong>
             </div>
-            <p className="roi-revenue-note">Gross projected revenue. Fees are set on the call.</p>
+
+            <div className="roi-fee-range">
+              <span>Estimated meeting spend</span>
+              <strong>
+                {money(stats.display.feeLow)}-{money(stats.display.feeHigh)}
+              </strong>
+            </div>
+            <p className="roi-revenue-note">
+              Qualified meetings are priced per showed call, typically {money(ROI_ASSUMPTIONS.meetingCostLow)}-{money(ROI_ASSUMPTIONS.meetingCostHigh)} depending on market, volume, and offer. We set the exact number on the call once we see your math.
+            </p>
 
             <a className="primary-button" href="#book">
               Book a call
