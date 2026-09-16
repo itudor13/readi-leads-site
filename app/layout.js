@@ -19,12 +19,12 @@ const sourceSerif = Source_Serif_4({
 export const metadata = {
   title: "Readi Leads | Pay for Qualified Meetings",
   description:
-    "Done for you targeted email outbound. Pay for qualified meetings. We pick who to email, set up sending, write the notes, and book the meetings that show up.",
+    "Pay for qualified meetings. Done-for-you targeted email outbound that puts owners on your calendar.",
   metadataBase: new URL("https://readileads.com"),
   openGraph: {
     title: "Readi Leads | Pay for Qualified Meetings",
     description:
-      "Done for you targeted email outbound. Pay for qualified meetings.",
+      "Done-for-you targeted email outbound that puts owners on your calendar.",
     url: "https://readileads.com",
     siteName: "Readi Leads",
     type: "website",
