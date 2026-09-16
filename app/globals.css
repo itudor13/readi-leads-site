@@ -73,7 +73,7 @@ nav a[href="#book"] {
 }
 
 .hero {
-  padding: 28px 20px 56px;
+  padding: 28px 20px 50px;
 }
 
 .hero-inner {
@@ -86,8 +86,8 @@ nav a[href="#book"] {
   margin: 0 auto;
   max-width: 980px;
   color: var(--ink);
-  font-size: clamp(36px, 5vw, 58px);
-  line-height: 1.08;
+  font-size: clamp(44px, 6vw, 78px);
+  line-height: 1.02;
   font-weight: 700;
 }
 
@@ -101,6 +101,14 @@ nav a[href="#book"] {
   font-size: 0.86em;
   font-style: italic;
   font-weight: 400;
+}
+
+.hero-subhead {
+  max-width: 760px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.5;
 }
 
 .hero-video {
@@ -155,6 +163,29 @@ nav a[href="#book"] {
   border-radius: 14px;
   background: var(--white);
   overflow: hidden;
+}
+
+.inaction-section {
+  padding: 0 20px 64px;
+}
+
+.inaction-inner {
+  width: min(920px, 100%);
+  margin: 0 auto;
+  padding: 24px 28px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper-card);
+  text-align: center;
+}
+
+.inaction-inner p {
+  max-width: 780px;
+  margin: 0 auto;
+  color: var(--ink);
+  font-size: clamp(19px, 2.2vw, 25px);
+  line-height: 1.42;
+  font-family: var(--font-serif), "Source Serif 4", Georgia, serif;
 }
 
 .section {
@@ -345,7 +376,7 @@ nav a[href="#book"] {
   grid-template-columns: 260px minmax(0, 1fr);
   gap: 44px;
   align-items: center;
-  width: min(900px, 100%);
+  width: min(980px, 100%);
 }
 
 .founder-photo {
@@ -363,8 +394,18 @@ nav a[href="#book"] {
 }
 
 .who-copy {
-  max-width: 620px;
-  font-size: 20px;
+  max-width: 680px;
+  font-size: 19px;
+}
+
+.who-copy p {
+  margin: 16px 0 0;
+}
+
+.who-copy p:first-child {
+  margin-top: 0;
+  color: var(--ink);
+  font-size: 21px;
 }
 
 .client-card:hover,
@@ -557,28 +598,40 @@ nav a[href="#book"] {
   color: var(--funnel);
 }
 
-.roi-revenue {
+.roi-revenue,
+.roi-fee-range {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 16px;
-  margin-top: 18px;
-  padding: 6px 0 14px;
+  padding: 12px 0;
   border-bottom: 1px solid var(--line);
 }
 
-.roi-revenue span {
+.roi-revenue {
+  margin-top: 18px;
+}
+
+.roi-revenue span,
+.roi-fee-range span {
   color: var(--ink);
   font-size: 16px;
   font-weight: 600;
 }
 
-.roi-revenue strong {
+.roi-revenue strong,
+.roi-fee-range strong {
   color: var(--ink);
   font-family: var(--font-serif), "Source Serif 4", Georgia, serif;
-  font-size: clamp(32px, 4vw, 42px);
+  font-size: clamp(30px, 3.6vw, 40px);
   font-weight: 700;
   letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.roi-fee-range strong {
+  color: var(--rust);
+  font-size: clamp(24px, 3vw, 34px);
 }
 
 .roi-revenue-note {
@@ -637,7 +690,19 @@ nav a[href="#book"] {
   }
 
   .hero h1 {
-    font-size: clamp(30px, 9vw, 44px);
+    font-size: clamp(36px, 11vw, 52px);
+  }
+
+  .hero-subhead {
+    font-size: 17px;
+  }
+
+  .inaction-section {
+    padding: 0 16px 52px;
+  }
+
+  .inaction-inner {
+    padding: 20px;
   }
 
   .section,
@@ -660,6 +725,18 @@ nav a[href="#book"] {
   .roi-inputs {
     border-right: 0;
     border-bottom: 1px solid var(--line);
+  }
+
+  .roi-revenue,
+  .roi-fee-range {
+    display: block;
+  }
+
+  .roi-revenue strong,
+  .roi-fee-range strong {
+    display: block;
+    margin-top: 6px;
+    white-space: normal;
   }
 
   .handle-row,
