@@ -47,12 +47,6 @@ function commas(n) {
   return new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(n);
 }
 
-function count(n) {
-  return new Intl.NumberFormat("en-US", {
-    maximumFractionDigits: 1,
-  }).format(n);
-}
-
 function displayValue(kind, value) {
   if (kind === "pct") return String(Math.round(value));
   return commas(value);
@@ -112,13 +106,13 @@ export default function RoiCalculator() {
     },
     {
       key: "meetings",
-      label: "Expected meetings",
-      value: count(stats.display.meetings),
+      label: "Meetings booked",
+      value: commas(stats.display.meetings),
     },
     {
       key: "deals",
-      label: "Expected deals",
-      value: count(stats.display.deals),
+      label: "Deals closed",
+      value: commas(stats.display.deals),
     },
   ];
 
@@ -237,6 +231,11 @@ export default function RoiCalculator() {
             <div className="roi-fee-range">
               <span>Estimated monthly spend</span>
               <strong>{money(stats.display.totalSpend)}</strong>
+            </div>
+
+            <div className="roi-fee-range roi-return">
+              <span>Projected ROI</span>
+              <strong>{stats.display.roiMultiple}x</strong>
             </div>
             <p className="roi-revenue-note">
               Includes {money(stats.display.infrastructureCost)} in monthly infrastructure and {money(stats.display.meetingFees)} in meeting costs at {money(ROI_ASSUMPTIONS.meetingCost)} per booked meeting.
