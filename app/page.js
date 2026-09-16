@@ -218,7 +218,7 @@ export default function Home() {
         <div className="hero-inner">
           <h1>Pay for Qualified Meetings.</h1>
           <p className="hero-subhead">
-            Done-for-you targeted email outbound that puts owners on your calendar. You bring the offer and take the calls. We run the machine that creates them.
+            We book the meetings. You close them.
           </p>
 
           <div className="hero-video" aria-label="Readi Leads overview video">
@@ -247,7 +247,7 @@ export default function Home() {
       <section className="inaction-section">
         <div className="inaction-inner">
           <p>
-            Every month you rely on referrals is a month your pipeline lives or dies on relationships you do not control. One cold network, one delayed response, one quarter of sitting leads, and revenue stalls with no system to restart it.
+            With ads, you let an algorithm guess who your buyer is. With cold email, you pick exactly who hears from you.
           </p>
         </div>
       </section>
