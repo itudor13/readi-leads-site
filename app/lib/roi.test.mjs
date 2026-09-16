@@ -19,7 +19,7 @@ test("defaults use the updated reply, booking, and cost assumptions", () => {
     totalReplies: 220,
     positive: 22,
     meetings: 11,
-    deals: 2,
+    deals: 2.2,
     projectedRevenue: 16500,
     infrastructureCost: 1000,
     meetingFees: 2750,
@@ -38,7 +38,7 @@ test("scales volume-based replies and infrastructure linearly", () => {
   assert.equal(result.display.totalReplies, 440);
   assert.equal(result.display.positive, 44);
   assert.equal(result.display.meetings, 22);
-  assert.equal(result.display.deals, 4);
+  assert.equal(result.display.deals, 4.4);
   assert.equal(result.display.projectedRevenue, 33000);
   assert.equal(result.display.infrastructureCost, 2000);
   assert.equal(result.display.meetingFees, 5500);
@@ -61,6 +61,7 @@ test("uses unrounded deals and meetings for revenue and cost", () => {
   assert.equal(result.meetingFees, 4125);
   assert.equal(result.totalSpend, 5625);
   assert.equal(result.netRevenue, 56250);
-  assert.equal(result.display.deals, 8);
+  assert.equal(result.display.meetings, 16.5);
+  assert.equal(result.display.deals, 8.3);
   assert.equal(result.display.projectedRevenue, 61875);
 });
