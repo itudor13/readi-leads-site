@@ -55,7 +55,7 @@ const handles = [
   {
     icon: "chat",
     title: "Reply handling",
-    body: "Replies get read, sorted, and answered. Interested people get a time proposed. We do not promise a set reply clock.",
+    body: "Replies get read, sorted, and answered same day. Interested people get a time proposed. Every inbox is owned.",
   },
   {
     icon: "doc",
@@ -71,24 +71,6 @@ const handles = [
     icon: "building",
     title: "Assets stay yours",
     body: "Domains, lists, copy, and campaign history transfer to you if you ever leave.",
-  },
-];
-
-const clients = [
-  {
-    name: "Beyond The Books",
-    href: "https://beyondthebooksco.com/",
-    body: "Fractional CFO services for professional services firms.",
-  },
-  {
-    name: "Native Gains",
-    href: "https://nativegains.com/",
-    body: "SEO services for the medical industry.",
-  },
-  {
-    name: "Vakerus",
-    href: "https://vakerus.com/",
-    body: "Strategic sourcing partner for manufacturing.",
   },
 ];
 
@@ -112,6 +94,16 @@ const faqs = [
     question: "What counts as a qualified sales call?",
     answer:
       "A 30-minute call with the owner, or the person who can buy, at a company we both agreed to go after. They have to show up. Not a random reply. Not a no-show. Not someone who cannot buy.",
+  },
+  {
+    question: "How much does this cost?",
+    answer:
+      "You pay per qualified meeting that shows up. The per-meeting cost depends on your market, volume, and offer price. We work out the exact number on the call once we have seen your math.",
+  },
+  {
+    question: "Why not just build this in-house or hire a VA?",
+    answer:
+      "You can spend three months buying domains, warming inboxes, building lists, writing copy, and hiring someone to watch replies. Or you pay for qualified meetings and we own the entire machine. The difference is you are paying for results, not infrastructure.",
   },
   {
     question: "Will this put my domain at risk?",
@@ -224,10 +216,10 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-inner">
-          <h1>
-            <span>Done for you targeted email outbound.</span>
-            <em>Pay for Qualified Meetings</em>
-          </h1>
+          <h1>Pay for Qualified Meetings.</h1>
+          <p className="hero-subhead">
+            Done-for-you targeted email outbound that puts owners on your calendar. You bring the offer and take the calls. We run the machine that creates them.
+          </p>
 
           <div className="hero-video" aria-label="Readi Leads overview video">
             <video
@@ -235,7 +227,7 @@ export default function Home() {
               playsInline
               preload="metadata"
               controlsList="nodownload"
-              poster="/readi-leads-video-poster.png"
+              poster="/pay-for-qualified-meetings-poster.svg"
               src="/lower-cost-qualified-meetings-via-cold-email.mp4"
             >
               Your browser does not support the video tag.
@@ -249,6 +241,14 @@ export default function Home() {
           </div>
 
           <CalendlyEmbed id="book" />
+        </div>
+      </section>
+
+      <section className="inaction-section">
+        <div className="inaction-inner">
+          <p>
+            Every month you rely on referrals is a month your pipeline lives or dies on relationships you do not control. One cold network, one delayed response, one quarter of sitting leads, and revenue stalls with no system to restart it.
+          </p>
         </div>
       </section>
 
@@ -320,38 +320,18 @@ export default function Home() {
               <h2>
                 Who is running <em>this.</em>
               </h2>
-              <p className="section-intro">Short version. No long story.</p>
             </div>
-            <p className="who-copy">
-              Ian Tudor assembled a $35M mobile home park portfolio via cold outreach. Readi Leads applies that same discipline for B2B teams who need qualified meetings without building the machine in-house.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section" id="clients">
-        <div className="section-inner">
-          <div className="section-heading left">
-            <h2>
-              Teams we work <em>with.</em>
-            </h2>
-            <p className="section-intro">
-              A few current clients. Same motion, different markets.
-            </p>
-          </div>
-          <div className="card-grid three">
-            {clients.map((client) => (
-              <a
-                className="client-card"
-                href={client.href}
-                key={client.name}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <h3>{client.name}</h3>
-                <p>{client.body}</p>
-              </a>
-            ))}
+            <div className="who-copy">
+              <p>
+                Ian Tudor built a $35M mobile home park portfolio using cold outreach. Not a course. Not theory. Real capital deployed into real assets because the outreach machine worked.
+              </p>
+              <p>
+                Readi Leads runs that same discipline for B2B teams. The sending, the lists, the copy, the reply handling, the pre-call sequencing, all built and managed so qualified meetings land on your calendar without you building the infrastructure in-house.
+              </p>
+              <p>
+                You do not need to learn cold email. You do not need to hire a VA to watch inboxes. You need meetings with people who can buy, and you need them to show up. That is what this does.
+              </p>
+            </div>
           </div>
         </div>
       </section>
