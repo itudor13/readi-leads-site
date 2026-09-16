@@ -64,10 +64,11 @@ function fillPercent(value, min, max) {
 }
 
 const ASSUMPTION_COPY = [
-  `${ROI_ASSUMPTIONS.replyRate * 100}% reply rate`,
+  `${ROI_ASSUMPTIONS.replyRate * 100}% total reply rate`,
   `${ROI_ASSUMPTIONS.positiveRate * 100}% of replies are positive`,
   `${ROI_ASSUMPTIONS.bookingRate * 100}% of positive replies book a meeting`,
-  `${ROI_ASSUMPTIONS.sendingDaysPerMonth} sending days per month`,
+  `${money(ROI_ASSUMPTIONS.infrastructureCostPerThousandDailySends)}/mo per 1,000 daily sends`,
+  `${money(ROI_ASSUMPTIONS.meetingCost)} per booked meeting`,
 ];
 
 export default function RoiCalculator() {
@@ -99,7 +100,7 @@ export default function RoiCalculator() {
     },
     {
       key: "positive",
-      label: "Positive replies (leads)",
+      label: "Positive replies",
       value: commas(stats.display.positive),
       accent: true,
     },
@@ -205,7 +206,7 @@ export default function RoiCalculator() {
             ))}
 
             <div className="roi-assumptions">
-              <p>Conservative assumptions</p>
+              <p>Assumptions</p>
               <p>{ASSUMPTION_COPY.join(" · ")}</p>
             </div>
           </div>
@@ -228,13 +229,11 @@ export default function RoiCalculator() {
             </div>
 
             <div className="roi-fee-range">
-              <span>Estimated meeting spend</span>
-              <strong>
-                {money(stats.display.feeLow)}-{money(stats.display.feeHigh)}
-              </strong>
+              <span>Estimated monthly spend</span>
+              <strong>{money(stats.display.totalSpend)}</strong>
             </div>
             <p className="roi-revenue-note">
-              Qualified meetings are priced per showed call, typically {money(ROI_ASSUMPTIONS.meetingCostLow)}-{money(ROI_ASSUMPTIONS.meetingCostHigh)} depending on market, volume, and offer. We set the exact number on the call once we see your math.
+              Includes {money(stats.display.infrastructureCost)} in monthly infrastructure and {money(stats.display.meetingFees)} in meeting costs at {money(ROI_ASSUMPTIONS.meetingCost)} per booked meeting.
             </p>
 
             <a className="primary-button" href="#book">
