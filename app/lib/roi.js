@@ -19,44 +19,45 @@ export const ROI_DEFAULTS = {
   closeRate: 20,
 };
 
-function expectedCount(n) {
-  return Number(n.toFixed(1));
-}
-
 export function computeRoi({ emailsPerDay, ltv, closeRate }) {
   const emailsPerMonth = emailsPerDay * ROI_ASSUMPTIONS.sendingDaysPerMonth;
   const totalReplies = emailsPerMonth * ROI_ASSUMPTIONS.replyRate;
   const positive = totalReplies * ROI_ASSUMPTIONS.positiveRate;
   const meetings = positive * ROI_ASSUMPTIONS.bookingRate;
-  const deals = meetings * (closeRate / 100);
+  const expectedDeals = meetings * (closeRate / 100);
+  const deals = Math.round(expectedDeals);
   const projectedRevenue = deals * ltv;
   const infrastructureCost =
     (emailsPerDay / 1000) * ROI_ASSUMPTIONS.infrastructureCostPerThousandDailySends;
   const meetingFees = meetings * ROI_ASSUMPTIONS.meetingCost;
   const totalSpend = infrastructureCost + meetingFees;
   const netRevenue = projectedRevenue - totalSpend;
+  const roiMultiple = totalSpend > 0 ? projectedRevenue / totalSpend : 0;
 
   return {
     emailsPerMonth,
     totalReplies,
     positive,
     meetings,
+    expectedDeals,
     deals,
     projectedRevenue,
     infrastructureCost,
     meetingFees,
     totalSpend,
     netRevenue,
+    roiMultiple,
     display: {
       totalReplies: Math.round(totalReplies),
       positive: Math.round(positive),
-      meetings: expectedCount(meetings),
-      deals: expectedCount(deals),
+      meetings: Math.round(meetings),
+      deals,
       projectedRevenue: Math.round(projectedRevenue),
       infrastructureCost: Math.round(infrastructureCost),
       meetingFees: Math.round(meetingFees),
       totalSpend: Math.round(totalSpend),
       netRevenue: Math.round(netRevenue),
+      roiMultiple: Number(roiMultiple.toFixed(1)),
     },
   };
 }
