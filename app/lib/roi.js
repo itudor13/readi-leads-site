@@ -1,10 +1,10 @@
 export const ROI_ASSUMPTIONS = {
   replyRate: 0.01,
-  positiveRate: 0.05,
-  bookingRate: 0.4,
+  positiveRate: 0.1,
+  bookingRate: 0.5,
   sendingDaysPerMonth: 22,
-  meetingCostLow: 250,
-  meetingCostHigh: 750,
+  infrastructureCostPerThousandDailySends: 1000,
+  meetingCost: 250,
 };
 
 export const ROI_SLIDER_RANGES = {
@@ -26,8 +26,11 @@ export function computeRoi({ emailsPerDay, ltv, closeRate }) {
   const meetings = positive * ROI_ASSUMPTIONS.bookingRate;
   const deals = meetings * (closeRate / 100);
   const projectedRevenue = deals * ltv;
-  const feeLow = meetings * ROI_ASSUMPTIONS.meetingCostLow;
-  const feeHigh = meetings * ROI_ASSUMPTIONS.meetingCostHigh;
+  const infrastructureCost =
+    (emailsPerDay / 1000) * ROI_ASSUMPTIONS.infrastructureCostPerThousandDailySends;
+  const meetingFees = meetings * ROI_ASSUMPTIONS.meetingCost;
+  const totalSpend = infrastructureCost + meetingFees;
+  const netRevenue = projectedRevenue - totalSpend;
 
   return {
     emailsPerMonth,
@@ -36,16 +39,20 @@ export function computeRoi({ emailsPerDay, ltv, closeRate }) {
     meetings,
     deals,
     projectedRevenue,
-    feeLow,
-    feeHigh,
+    infrastructureCost,
+    meetingFees,
+    totalSpend,
+    netRevenue,
     display: {
       totalReplies: Math.round(totalReplies),
       positive: Math.round(positive),
       meetings: Math.round(meetings),
       deals: Math.round(deals),
       projectedRevenue: Math.round(projectedRevenue),
-      feeLow: Math.round(feeLow),
-      feeHigh: Math.round(feeHigh),
+      infrastructureCost: Math.round(infrastructureCost),
+      meetingFees: Math.round(meetingFees),
+      totalSpend: Math.round(totalSpend),
+      netRevenue: Math.round(netRevenue),
     },
   };
 }
