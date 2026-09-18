@@ -216,7 +216,7 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-inner">
-          <h1>Your Next 4 Deals Are Hiding in 10,000 Inboxes. We Know Which Ones.</h1>
+          <h1>A More Reliable Way to Start B2B Conversations.</h1>
           <p className="hero-subhead">
             We book the meetings. You close them.
           </p>
