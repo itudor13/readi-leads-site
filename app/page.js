@@ -1,7 +1,7 @@
 import RoiCalculator from "./roi-calculator";
 
 const CALENDLY_URL =
-  "https://calendly.com/iantudor/readileads?hide_event_type_details=1&hide_gdpr_banner=1";
+  "https://calendly.com/ian-readileads/30min";
 
 const whyCards = [
   {
