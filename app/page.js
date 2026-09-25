@@ -210,6 +210,7 @@ export default function Home() {
           <a href="#roi">ROI</a>
           <a href="#who">Proof</a>
           <a href="#faq">FAQ</a>
+          <a href="/how-it-works">How it works</a>
           <a href="#book">Book a call</a>
         </nav>
       </header>
