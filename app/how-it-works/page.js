@@ -68,6 +68,19 @@ const timeline = [
   ["Weeks 5-12", "Scale the messages and audiences that perform."],
 ];
 
+
+function CalendlyEmbed() {
+  return (
+    <div className="lead-magnet-calendar">
+      <div
+        className="calendly-inline-widget"
+        data-url={CALENDLY_URL}
+        style={{ minWidth: "320px", height: "700px" }}
+      />
+    </div>
+  );
+}
+
 export default function HowItWorksPage() {
   return (
     <main className="lead-magnet-page">
@@ -174,6 +187,16 @@ export default function HowItWorksPage() {
             </article>
           ))}
         </div>
+      </section>
+
+
+      <section className="lead-magnet-calendar-section">
+        <p className="eyebrow">Choose a time</p>
+        <h2>Book a conversation with <em>Ian.</em></h2>
+        <p className="lead-magnet-calendar-intro">
+          Bring your market, offer, and questions. We&apos;ll map out what a qualified meeting could look like for you.
+        </p>
+        <CalendlyEmbed />
       </section>
 
       <section className="lead-magnet-cta">
