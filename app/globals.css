@@ -763,3 +763,242 @@ nav a[href="#book"] {
     margin-right: auto;
   }
 }
+
+
+.lead-magnet-page {
+  min-height: 100vh;
+  background: var(--paper);
+}
+
+.lead-magnet-header {
+  border-bottom: 1px solid var(--line);
+}
+
+.lead-magnet-back {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.lead-magnet-hero,
+.lead-magnet-section {
+  width: min(1080px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.lead-magnet-hero {
+  padding: 92px 0 84px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+  color: var(--rust);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lead-magnet-hero h1,
+.lead-magnet-section h2,
+.lead-magnet-cta h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-serif), "Source Serif 4", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.lead-magnet-hero h1 {
+  font-size: clamp(52px, 8vw, 92px);
+  line-height: 0.98;
+}
+
+.lead-magnet-hero h1 em,
+.lead-magnet-section h2 em {
+  font-weight: 400;
+}
+
+.lead-magnet-subtitle {
+  margin: 24px 0 0;
+  color: var(--brown);
+  font-family: var(--font-serif), "Source Serif 4", Georgia, serif;
+  font-size: clamp(24px, 3vw, 34px);
+  font-style: italic;
+}
+
+.lead-magnet-intro {
+  width: min(620px, 100%);
+  margin: 24px auto 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.lead-magnet-section {
+  padding: 86px 0;
+  border-top: 1px solid var(--line);
+}
+
+.lead-magnet-section-heading {
+  max-width: 640px;
+  margin-bottom: 42px;
+}
+
+.lead-magnet-section h2,
+.lead-magnet-cta h2 {
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.02;
+}
+
+.lead-magnet-process {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 72px;
+}
+
+.lead-magnet-step {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 20px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+
+.lead-magnet-number {
+  color: var(--rust);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.lead-magnet-step h3 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-serif), "Source Serif 4", Georgia, serif;
+  font-size: 28px;
+}
+
+.lead-magnet-step p,
+.lead-magnet-copy,
+.email-example p,
+.lead-magnet-timeline-row {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.lead-magnet-step p {
+  margin: 10px 0 0;
+}
+
+.lead-magnet-two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 80px;
+  align-items: start;
+}
+
+.lead-magnet-copy {
+  margin: 0;
+}
+
+.lead-magnet-copy p {
+  margin: 0 0 20px;
+}
+
+.email-example-layout {
+  align-items: center;
+}
+
+.email-example {
+  margin: 0;
+  padding: 36px 40px;
+  border: 1px solid var(--line);
+  background: var(--paper-deep);
+  box-shadow: 0 16px 40px rgba(42, 36, 31, 0.06);
+}
+
+.email-example p {
+  margin: 0 0 18px;
+  color: var(--ink);
+}
+
+.email-example footer {
+  margin-top: 28px;
+  color: var(--brown);
+  font-family: var(--font-serif), "Source Serif 4", Georgia, serif;
+  font-size: 24px;
+  font-style: italic;
+}
+
+.lead-magnet-timeline-list {
+  border-top: 1px solid var(--line);
+}
+
+.lead-magnet-timeline-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.lead-magnet-timeline-row strong {
+  color: var(--ink);
+}
+
+.lead-magnet-cta {
+  padding: 92px 20px 104px;
+  background: var(--dark);
+  text-align: center;
+}
+
+.lead-magnet-cta h2 {
+  width: min(720px, 100%);
+  margin: 0 auto;
+  color: var(--white);
+}
+
+.lead-magnet-cta .eyebrow {
+  color: var(--rust-light, #d9775d);
+}
+
+.lead-magnet-cta .primary-button {
+  margin: 32px auto 0;
+}
+
+@media (max-width: 760px) {
+  .lead-magnet-hero,
+  .lead-magnet-section {
+    width: min(100% - 32px, 1080px);
+  }
+
+  .lead-magnet-hero {
+    padding: 68px 0 60px;
+  }
+
+  .lead-magnet-section {
+    padding: 60px 0;
+  }
+
+  .lead-magnet-process,
+  .lead-magnet-two-column {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .lead-magnet-step {
+    padding: 22px 0;
+  }
+
+  .lead-magnet-timeline-row {
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+  }
+
+  .email-example {
+    padding: 28px 24px;
+  }
+}
