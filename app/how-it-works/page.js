@@ -25,6 +25,42 @@ const processSteps = [
   },
 ];
 
+
+const faqItems = [
+  [
+    "Who is this best for?",
+    "This works best for B2B teams with a clear offer, enough market to contact, and someone ready to take qualified sales calls.",
+  ],
+  [
+    "Will you use our company domain?",
+    "No. Outreach runs through a separate sending setup so your main company domain is protected. We monitor deliverability and bounce rates throughout the campaign.",
+  ],
+  [
+    "Do we approve the companies and messaging?",
+    "Yes. We agree on the target market and qualified-lead definition before sending. You approve the messaging before it goes live.",
+  ],
+  [
+    "What happens when someone replies?",
+    "We read and sort the replies, answer straightforward questions, identify real interest, and move qualified prospects toward a meeting.",
+  ],
+  [
+    "What happens after a meeting is booked?",
+    "The prospect receives the calendar invite and any agreed pre-call material. You receive the meeting with context on who they are and why they took the call.",
+  ],
+  [
+    "What do we own?",
+    "Your approved lists, messaging, domains, campaign history, and learnings stay with you. The work creates a useful outbound asset, not just a temporary campaign.",
+  ],
+  [
+    "What if a qualified prospect does not show?",
+    "No-show meetings are not charged. The goal is a meeting with a real person who fits the definition we agreed on.",
+  ],
+  [
+    "Can we stop or change the campaign?",
+    "Yes. We use the early weeks to learn what is working, then adjust the audience, offer, and messaging as the data gives us better direction.",
+  ],
+];
+
 const timeline = [
   ["Week 1", "Agree on the market and the message."],
   ["Weeks 2-3", "Replies come in and conversations begin."],
@@ -120,6 +156,22 @@ export default function HowItWorksPage() {
               <strong>{label}</strong>
               <span>{body}</span>
             </div>
+          ))}
+        </div>
+      </section>
+
+
+      <section className="lead-magnet-section lead-magnet-faq">
+        <div className="lead-magnet-section-heading">
+          <p className="eyebrow">Before you book</p>
+          <h2>The questions people usually <em>ask.</em></h2>
+        </div>
+        <div className="lead-magnet-faq-grid">
+          {faqItems.map(([question, answer]) => (
+            <article className="lead-magnet-faq-item" key={question}>
+              <h3>{question}</h3>
+              <p>{answer}</p>
+            </article>
           ))}
         </div>
       </section>
