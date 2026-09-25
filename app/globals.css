@@ -1063,7 +1063,7 @@ nav a[href="#book"] {
 
 .lead-magnet-calendar {
   width: min(960px, 100%);
-  min-height: 700px;
+  min-height: 1000px;
   margin: 36px auto 0;
   overflow: hidden;
   border: 1px solid var(--line);
