@@ -1002,3 +1002,37 @@ nav a[href="#book"] {
     padding: 28px 24px;
   }
 }
+
+
+.lead-magnet-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 56px;
+  border-top: 1px solid var(--line);
+}
+
+.lead-magnet-faq-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.lead-magnet-faq-item h3 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-serif), "Source Serif 4", Georgia, serif;
+  font-size: 25px;
+  line-height: 1.15;
+}
+
+.lead-magnet-faq-item p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+@media (max-width: 760px) {
+  .lead-magnet-faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
