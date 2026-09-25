@@ -1036,3 +1036,41 @@ nav a[href="#book"] {
     grid-template-columns: 1fr;
   }
 }
+
+
+.lead-magnet-calendar-section {
+  padding: 86px 20px 96px;
+  background: var(--paper-deep);
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.lead-magnet-calendar-section h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-serif), "Source Serif 4", Georgia, serif;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.02;
+}
+
+.lead-magnet-calendar-intro {
+  width: min(560px, 100%);
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.lead-magnet-calendar {
+  width: min(960px, 100%);
+  min-height: 700px;
+  margin: 36px auto 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: 0 18px 50px rgba(42, 36, 31, 0.08);
+}
+
+.lead-magnet-calendar .calendly-inline-widget {
+  width: 100%;
+}
