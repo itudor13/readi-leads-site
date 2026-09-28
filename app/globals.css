@@ -167,7 +167,7 @@ nav a[href="#book"] {
 }
 
 .inaction-section {
-  padding: 0 20px 64px;
+  padding: 42px 20px 64px;
 }
 
 .inaction-inner {
@@ -1077,9 +1077,7 @@ nav a[href="#book"] {
 }
 
 .client-strip {
-  padding: 34px 20px 40px;
-  border-top: 1px solid var(--line);
-  background: var(--paper-card);
+  padding: 34px 20px 24px;
 }
 
 .client-strip-inner {
