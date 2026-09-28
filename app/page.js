@@ -79,7 +79,7 @@ const faqs = [
   {
     question: "What counts as a qualified sales call?",
     answer:
-      "A 30-minute call with the owner, or the person who can buy, at a company we both agreed to go after. They have to show up. Not a random reply. Not a no-show. Not someone who cannot buy.",
+      "A meeting with someone who fits your ideal client profile and is on the target list we agreed on before sending. We define those criteria together up front, and the person has to show up.",
   },
   {
     question: "How much does this cost?",
