@@ -1,3 +1,4 @@
+import Image from "next/image";
 import RoiCalculator from "./roi-calculator";
 
 const CALENDLY_URL =
@@ -71,21 +72,6 @@ const handles = [
     icon: "building",
     title: "Assets stay yours",
     body: "Domains, lists, copy, and campaign history transfer to you if you ever leave.",
-  },
-];
-
-const skipCards = [
-  {
-    title: "You do not sell at about $5,000",
-    body: "The meeting cost will not pay off.",
-  },
-  {
-    title: "You do not have 8,000 to 10,000 companies to email",
-    body: "The group is too small to learn from.",
-  },
-  {
-    title: "Your offer looks like everyone else's",
-    body: "Email will not save it.",
   },
 ];
 
@@ -207,7 +193,7 @@ export default function Home() {
         </a>
         <nav aria-label="Main navigation">
           <a href="#why">Why</a>
-          <a href="#roi">ROI</a>
+          <a href="#roi">Revenue</a>
           <a href="#who">Proof</a>
           <a href="#faq">FAQ</a>
           <a href="/how-it-works">How it works</a>
@@ -242,6 +228,24 @@ export default function Home() {
           </div>
 
           <CalendlyEmbed id="book" />
+        </div>
+      </section>
+
+      <section className="client-strip" aria-labelledby="client-strip-title">
+        <div className="client-strip-inner">
+          <p id="client-strip-title">Clients we work with</p>
+          <div className="client-logos">
+            <div className="client-logo client-logo-studio">
+              <Image src="/clients/studio-wip.png" alt="Studio W.I.P." width={1412} height={1000} />
+            </div>
+            <div className="client-logo client-logo-lyft">
+              <Image src="/clients/lyft-capital.png" alt="Lyft Capital" width={290} height={83} />
+            </div>
+            <div className="client-logo client-logo-native">
+              <Image src="/clients/native-gains.png" alt="" width={175} height={175} />
+              <span>Native Gains</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -333,24 +337,6 @@ export default function Home() {
                 You do not need to learn cold email. You do not need to hire a VA to watch inboxes. You need meetings with people who can buy, and you need them to show up. That is what this does.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section" id="skip">
-        <div className="section-inner">
-          <div className="section-heading">
-            <h2>
-              Skip this if any of these are <em>true.</em>
-            </h2>
-          </div>
-          <div className="card-grid three">
-            {skipCards.map((card) => (
-              <article className="skip-card" key={card.title}>
-                <h3>{card.title}</h3>
-                <p>{card.body}</p>
-              </article>
-            ))}
           </div>
         </div>
       </section>

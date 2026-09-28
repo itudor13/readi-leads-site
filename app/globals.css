@@ -1075,3 +1075,81 @@ nav a[href="#book"] {
 .lead-magnet-calendar .calendly-inline-widget {
   width: 100%;
 }
+
+.client-strip {
+  padding: 34px 20px 40px;
+  border-top: 1px solid var(--line);
+  background: var(--paper-card);
+}
+
+.client-strip-inner {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.client-strip-inner > p {
+  margin: 0 0 26px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.client-logos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 32px;
+}
+
+.client-logo {
+  min-width: 0;
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.client-logo img {
+  max-width: 100%;
+  max-height: 82px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.client-logo-studio img {
+  max-height: 74px;
+}
+
+.client-logo-native {
+  gap: 10px;
+}
+
+.client-logo-native img {
+  width: 52px;
+  height: 52px;
+}
+
+.client-logo-native span {
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .client-logos {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .client-logo {
+    min-height: 64px;
+  }
+
+  .client-logo img {
+    max-height: 70px;
+  }
+}

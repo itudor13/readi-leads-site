@@ -67,8 +67,6 @@ const ASSUMPTION_COPY = [
   `${ROI_ASSUMPTIONS.replyRate * 100}% total reply rate`,
   `${ROI_ASSUMPTIONS.positiveRate * 100}% of replies are positive`,
   `${ROI_ASSUMPTIONS.bookingRate * 100}% of positive replies book a meeting`,
-  `${money(ROI_ASSUMPTIONS.infrastructureCostPerThousandDailySends)}/mo per 1,000 daily sends`,
-  `${money(ROI_ASSUMPTIONS.meetingCost)} per booked meeting`,
 ];
 
 export default function RoiCalculator() {
@@ -120,13 +118,13 @@ export default function RoiCalculator() {
     <section className="section roi-section" id="roi">
       <div className="section-inner roi-wrap">
         <div className="roi-heading">
-          <p className="kicker">Monthly projection</p>
+          <p className="kicker">Revenue projection</p>
           <h2>
             What could a month of outbound <em>produce?</em>
           </h2>
           <p className="section-intro">
             Set your daily volume, client value, and close rate. Reply rate and
-            booking assumptions stay fixed so the estimate stays conservative.
+            booking assumptions stay fixed for a consistent projection.
           </p>
         </div>
 
@@ -212,7 +210,7 @@ export default function RoiCalculator() {
           </div>
 
           <div className="roi-results" aria-live="polite">
-            <h3 className="roi-col-title">Projected monthly results</h3>
+            <h3 className="roi-col-title">Potential monthly results</h3>
 
             <div className="roi-metrics">
               {resultCards.map((card) => (
@@ -224,22 +222,11 @@ export default function RoiCalculator() {
             </div>
 
             <div className="roi-revenue">
-              <span>Projected revenue</span>
+              <span>Potential monthly revenue</span>
               <strong>{money(stats.display.projectedRevenue)}</strong>
             </div>
 
-            <div className="roi-fee-range">
-              <span>Estimated monthly spend</span>
-              <strong>{money(stats.display.totalSpend)}</strong>
-            </div>
-
-            <div className="roi-fee-range roi-return">
-              <span>Projected ROI</span>
-              <strong>{stats.display.roiMultiple}x</strong>
-            </div>
-            <p className="roi-revenue-note">
-              Includes {money(stats.display.infrastructureCost)} in monthly infrastructure and {money(stats.display.meetingFees)} in meeting costs at {money(ROI_ASSUMPTIONS.meetingCost)} per booked meeting.
-            </p>
+            <p className="roi-revenue-note">Illustrative estimate based on the assumptions shown. Actual results will vary.</p>
 
             <a className="primary-button" href="#book">
               Book a call
