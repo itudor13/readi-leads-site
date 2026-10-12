@@ -203,7 +203,7 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-inner">
-          <h1>A More Reliable Way to Start B2B Conversations.</h1>
+          <h1>Only Pay for B2B Sales Appointments That Show Up</h1>
           <p className="hero-subhead">
             We book the meetings. You close them.
           </p>
