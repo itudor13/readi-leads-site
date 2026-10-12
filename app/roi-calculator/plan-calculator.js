@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ROI_ASSUMPTIONS } from "../lib/roi";
 
 const EMAIL_OPTIONS = [500, 1000, 2000, 3000, 4000, 5000];
-const LTV_OPTIONS = Array.from({ length: 19 }, (_, index) => 5000 + index * 2500);
+const LTV_OPTIONS = Array.from({ length: 10 }, (_, index) => 5000 + index * 5000);
 const CLOSE_OPTIONS = Array.from({ length: 9 }, (_, index) => 10 + index * 5);
 const INFRA_OPTIONS = Array.from({ length: 18 }, (_, index) => 750 + index * 250);
 const CALL_OPTIONS = Array.from({ length: 8 }, (_, index) => 150 + index * 50);
@@ -42,7 +42,7 @@ function Slider({ label, options, value, onChange, format = number, suffix = "" 
 
 export default function PlanCalculator() {
   const [emailsPerDay, setEmailsPerDay] = useState(1000);
-  const [ltv, setLtv] = useState(7500);
+  const [ltv, setLtv] = useState(10000);
   const [closeRate, setCloseRate] = useState(20);
   const [infrastructureFee, setInfrastructureFee] = useState(1000);
   const [costPerCall, setCostPerCall] = useState(250);
