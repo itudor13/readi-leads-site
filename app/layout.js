@@ -34,9 +34,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`}>
-      <body>
-        {children}
-        <Script id="meta-pixel" strategy="afterInteractive">
+      <head>
+        <Script id="meta-pixel" strategy="beforeInteractive">
           {`!function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -48,6 +47,9 @@ export default function RootLayout({ children }) {
             fbq('init','2180069262884940');
             fbq('track','PageView');`}
         </Script>
+      </head>
+      <body>
+        {children}
         <noscript>
           <img
             height="1"
