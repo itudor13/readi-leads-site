@@ -270,55 +270,24 @@ export default function FundingLeadPage() {
       </header>
 
       <section className="bf-hero">
-        <div className="bf-hero-grid">
-          <div className="bf-hero-copy">
-            <p className="bf-kicker">For direct lenders and business-loan brokers</p>
-            <h1>Meet business owners actively exploring funding.</h1>
-            <p className="bf-hero-lead">
-              Readi Leads builds and operates paid-social funnels that generate small-business funding inquiries around the criteria your team can actually work.
-            </p>
-            <div className="bf-hero-actions">
-              <a className="bf-button" href="#qualify">Qualify as a buyer</a>
-              <a className="bf-text-link" href="#how">See the delivery process</a>
-            </div>
-            <p className="bf-microcopy">Availability depends on product, geography, filters, and current supply.</p>
-          </div>
+        <div className="bf-hero-inner">
+          <p className="bf-kicker">For direct lenders and business-loan brokers</p>
+          <h1>Meet business owners actively exploring funding.</h1>
+          <p className="bf-hero-lead">
+            Define your buy box. We build the paid-social funnel and generate small-business funding inquiries your team can work.
+          </p>
 
-          <div className="bf-flow-card" aria-label="Readi Leads funding inquiry flow">
-            <p className="bf-flow-label">The lead path</p>
-            <div className="bf-flow-row">
-              <span>Paid social</span><i aria-hidden="true" />
-              <span>Owned funnel</span><i aria-hidden="true" />
-              <span>Qualified inquiry</span>
-            </div>
-            <div className="bf-flow-filter">
-              <p>Built around your buy box</p>
-              <div>
-                <span>Geography</span>
-                <span>Revenue</span>
-                <span>Time in business</span>
-                <span>Product type</span>
-              </div>
-            </div>
-            <div className="bf-flow-result">
-              <span className="bf-pulse" />
-              Routed to your team for fast follow-up
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bf-video-section" aria-labelledby="funding-video-title">
-        <div className="bf-video-shell">
-          <div className="bf-video-placeholder">
+          <div className="bf-hero-video" aria-labelledby="funding-video-title">
             <span className="bf-play" aria-hidden="true">▶</span>
             <div>
-              <p className="bf-kicker">Loom coming soon</p>
+              <p className="bf-video-label">Video coming soon</p>
               <h2 id="funding-video-title">How the business-funding lead system works</h2>
-              <p>Replace this placeholder with Ian’s short walkthrough without changing the page layout.</p>
+              <p>Ian’s short walkthrough will appear here.</p>
             </div>
           </div>
-          <a className="bf-button bf-button-light" href="#qualify">Request availability</a>
+
+          <a className="bf-button bf-hero-button" href="#qualify">Qualify and book a call</a>
+          <p className="bf-microcopy">Availability depends on product, geography, filters, and current supply.</p>
         </div>
       </section>
 
